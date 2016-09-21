@@ -4,8 +4,10 @@ package de.syntaktischer_zucker.diffusion;
 /// imports
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  *
@@ -39,5 +41,10 @@ public class BaseStrategyTests {
 	 */
 	@After
 	public void tearDown() {
+	}
+	
+	@Test
+	public void testDummy() {
+		Assert.assertEquals(1, 1);
 	}
 }
