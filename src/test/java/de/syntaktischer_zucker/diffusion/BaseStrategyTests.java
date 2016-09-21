@@ -15,12 +15,6 @@ public class BaseStrategyTests {
 	/**
 	 * @brief
 	 */
-	public BaseStrategyTests() {
-	}
-	
-	/**
-	 * @brief
-	 */
 	@BeforeClass
 	public static void setUpClass() {
 	}
