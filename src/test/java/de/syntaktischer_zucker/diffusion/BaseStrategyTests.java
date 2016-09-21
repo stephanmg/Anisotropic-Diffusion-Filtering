@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -43,8 +44,13 @@ public class BaseStrategyTests {
 	public void tearDown() {
 	}
 	
+	/**
+	 * @brief test filter function
+	 */
 	@Test
-	public void testDummy() {
-		Assert.assertEquals(1, 1);
+	public void testFilter() {
+		BaseStrategy baseStrategy = new BaseStrategy();
+		assertNotNull(baseStrategy);
+		baseStrategy.filter();
 	}
 }
