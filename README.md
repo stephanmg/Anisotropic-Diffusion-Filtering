@@ -2,7 +2,7 @@ Anisotropic-Diffusion-Filtering
 ========
 
 # Project description
-The purpose of this project is to reduce noise and preserve
+|<> The purpose of this project is to reduce noise and preserve
 structure in images of human tumour stroma cells acquired by
 Opal-dye staining multiplexed biomarker imaging. As a prerequisite
 for further image segmentation and analysis of the cancerogenous
