@@ -5,6 +5,6 @@ package de.syntaktischer_zucker.diffusion;
  * @brief
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
-public interface Strategy {
+public interface Filter {
 	void filter();
 }

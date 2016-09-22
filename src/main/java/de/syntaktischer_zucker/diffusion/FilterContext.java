@@ -9,15 +9,15 @@ import lombok.Setter;
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
 @Setter
-public class Context {
-	private Strategy strategy = null;
+public class FilterContext {
+	private Filter filter = null;
 	
 	/**
 	 * @brief
 	 */
-	public void execute() {
-		if (this.strategy != null) {
-			this.strategy.filter();
+	public void doFilter() {
+		if (this.filter != null) {
+			this.filter.filter();
 		}
 	}
 }

@@ -11,8 +11,8 @@ public class Client {
 	 * @param args 
 	 */
 	public static void main(final String... args) {
-		Context context = new Context();
-		context.setStrategy(new BaseStrategy());
-		context.execute();
+		FilterContext context = new FilterContext();
+		context.setFilter(new BaseFilter());
+		context.doFilter();
 	}
 }

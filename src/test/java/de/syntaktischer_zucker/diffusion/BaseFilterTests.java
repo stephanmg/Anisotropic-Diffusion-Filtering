@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  *
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
-public class BaseStrategyTests {
+public class BaseFilterTests {
 	/**
 	 * @brief
 	 */
@@ -48,7 +48,7 @@ public class BaseStrategyTests {
 	 */
 	@Test
 	public void testFilter() {
-		BaseStrategy baseStrategy = new BaseStrategy();
+		BaseFilter baseStrategy = new BaseFilter();
 		assertNotNull(baseStrategy);
 		baseStrategy.filter();
 	}
