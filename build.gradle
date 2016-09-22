@@ -37,7 +37,8 @@ buildscript {
 
 jacocoTestReport.doFirst {
 	def base_dir = 'build/classes/main/de/syntaktischer_zucker/diffusion/';
-	classDirectories = files(base_dir+'/BaseFilter.class');
+	classDirectories = files(base_dir+'/BaseFilter.class',
+				 base_dir+'/ImageProcessor.class');
 }
 
 jacocoTestReport {

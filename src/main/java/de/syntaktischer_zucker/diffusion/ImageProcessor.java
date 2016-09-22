@@ -3,8 +3,8 @@ package de.syntaktischer_zucker.diffusion;
 
 /// imports
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import javax.imageio.ImageIO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
@@ -27,48 +27,48 @@ public class ImageProcessor {
 	/// methods
 	/**
 	 * @brief
-	 * @param file
+	 * @param url
 	 */
-	public void process(final File file) {
+	public void process(final URL url) {
 		/// load image
-		load_image(file);
+		loadImage(url);
 		
 		/// pre process image
-		pre_process();
+		preProcess();
 		
 		/// filter image
 		context.setFilter(this.filter);
 		context.doFilter(this.image);
 		
 		/// post process image
-		post_process();
+		postProcess();
 		
 	}
 	
 	/**
 	 * @brief
 	 */
-	protected void pre_process() {
+	protected void preProcess() {
 		
 	}
 	
 	/**
 	 * @brief
 	 */
-	protected void post_process() {
+	protected void postProcess() {
 		
 	}
 	
 	/**
 	 * @brief
-	 * @param file 
+	 * @param url 
 	 */
-	protected void load_image(final File file) {
+	protected void loadImage(final URL url) {
 		try {
-			this.image = ImageIO.read(file);
+			this.image = ImageIO.read(url);
 		} catch (IOException ex) {
 			log.error("Error reading image from file in path: ");
-			log.error(file.getAbsoluteFile());
+			log.error(url);
 			log.error(ex);
 		}
 	}
