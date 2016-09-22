@@ -10,7 +10,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * @brief
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
 public class BaseFilterTests {
@@ -48,8 +48,8 @@ public class BaseFilterTests {
 	 */
 	@Test
 	public void testFilter() {
-		BaseFilter baseStrategy = new BaseFilter();
+		Filter baseStrategy = new FilterFactory().getFilter();
 		assertNotNull(baseStrategy);
-		baseStrategy.filter();
+		baseStrategy.filter(null);
 	}
 }
