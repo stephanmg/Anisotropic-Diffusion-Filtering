@@ -11,6 +11,6 @@ public class FilterFactory {
 	 * @return 
 	 */
 	public Filter getFilter() {
-		return new BaseFilter();
+		return new IsotropicDiffusionFilter();
 	}
 }

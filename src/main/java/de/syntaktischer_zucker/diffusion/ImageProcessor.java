@@ -4,6 +4,7 @@ package de.syntaktischer_zucker.diffusion;
 /// imports
 import java.awt.Image;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import lombok.Setter;
@@ -20,7 +21,7 @@ import lombok.extern.log4j.Log4j2;
 public class ImageProcessor {
 	/// members
 	private final FilterContext context = new FilterContext();
-	private final Filter filter = new BaseFilter();
+	private final Filter filter = new IsotropicDiffusionFilter();
 	private Image image;
 	
 
@@ -43,6 +44,8 @@ public class ImageProcessor {
 		/// post process image
 		postProcess();
 		
+		/// save image
+		saveImage(url);
 	}
 	
 	/**
@@ -69,6 +72,28 @@ public class ImageProcessor {
 		} catch (IOException ex) {
 			log.error("Error reading image from file in path: ");
 			log.error(url);
+			log.error(ex);
+		}
+	}
+	
+	/**
+	 * @brief 
+	 * @param url 
+	 */
+	protected void saveImage(final URL url) {
+		
+	}
+	
+	/**
+	 * 
+	 * @param args 
+	 */
+	public static void main(String... args) {
+		try {
+			System.err.println("Start");
+			new ImageProcessor().process(new URL("https://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png"));
+			System.err.println("End");
+		} catch (MalformedURLException ex) {
 			log.error(ex);
 		}
 	}

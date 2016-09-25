@@ -16,6 +16,7 @@ implement the `Filter` interface or inherit from `BaseFilter`.
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/03r2i9tp7rlu2spr/branch/ci?svg=true)](https://ci.appveyor.com/project/stephanmg/Anisotropic-Diffusion-Filtering/branch/master)
 [![Dependency Status](https://www.versioneye.com/user/projects/57e2c990bd6fa6004e11e923/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57e2c990bd6fa6004e11e923)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0)
+[![Gitter chat](https://badges.gitter.im/woothemes/FlexSlider.png)](https://gitter.im/stephanmg/Anisotropic-Diffusion-Filtering)
 
 ## How To Build The Project
 
