@@ -51,6 +51,5 @@ public class BaseFilterTests {
 	public void testFilter() {
 		Filter baseStrategy = new FilterFactory().getFilter();
 		assertNotNull(baseStrategy);
-		baseStrategy.filter(null);
 	}
 }
