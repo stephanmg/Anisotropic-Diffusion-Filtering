@@ -7,6 +7,8 @@ import java.net.URL;
 import lombok.extern.log4j.Log4j2;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
+import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -46,6 +48,17 @@ public class ImageProcessorTests {
 			log.error(ex);
 		}
 		
+		ImageProcessor processor = new ImageProcessor();
+		processor.loadImage(url);
+		assertNotNull(processor.getImage());
+
+		try {
+			url = new URL("https://upload.wikimedia.org/wikipedia/en/2/24/LennaXYZ.png");
+		} catch (MalformedURLException ex) {
+			log.error(ex);
+		}
+
 		new ImageProcessor().loadImage(url);
+		Assert.assertNull(processor.getImage());
 	}
 }

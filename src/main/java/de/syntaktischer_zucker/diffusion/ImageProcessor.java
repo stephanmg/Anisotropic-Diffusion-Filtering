@@ -3,10 +3,12 @@ package de.syntaktischer_zucker.diffusion;
 
 /// imports
 import java.awt.Image;
+import java.awt.image.RenderedImage;
+import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import javax.imageio.ImageIO;
+import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
@@ -17,7 +19,8 @@ import lombok.extern.log4j.Log4j2;
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
 @Log4j2
-@Setter
+@Setter 
+@Getter
 public class ImageProcessor {
 	/// members
 	private final FilterContext context = new FilterContext();
@@ -81,19 +84,9 @@ public class ImageProcessor {
 	 * @param url 
 	 */
 	protected void saveImage(final URL url) {
-		
-	}
-	
-	/**
-	 * 
-	 * @param args 
-	 */
-	public static void main(String... args) {
 		try {
-			System.err.println("Start");
-			new ImageProcessor().process(new URL("https://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png"));
-			System.err.println("End");
-		} catch (MalformedURLException ex) {
+			ImageIO.write( (RenderedImage) this.image, "png", new File("test.png"));
+		} catch (IOException ex) {
 			log.error(ex);
 		}
 	}
