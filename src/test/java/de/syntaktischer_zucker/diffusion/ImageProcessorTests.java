@@ -42,6 +42,7 @@ public class ImageProcessorTests {
 	public void loadImage() {
 		URL url = null;
 		
+		/// the usual case - resource available
 		try {
 			url = new URL("https://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png");
 		} catch (MalformedURLException ex) {
@@ -52,13 +53,15 @@ public class ImageProcessorTests {
 		processor.loadImage(url);
 		assertNotNull(processor.getImage());
 
+		/// see if we catch the exception if image could no be loaded
 		try {
 			url = new URL("https://upload.wikimedia.org/wikipedia/en/2/24/LennaXYZ.png");
 		} catch (MalformedURLException ex) {
 			log.error(ex);
 		}
 
-		new ImageProcessor().loadImage(url);
+		processor = new ImageProcessor();
+		processor.loadImage(url);
 		Assert.assertNull(processor.getImage());
 	}
 }

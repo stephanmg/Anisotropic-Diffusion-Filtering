@@ -17,9 +17,22 @@ public class IsotropicDiffusionFilter implements Filter {
 
 	
 	/// ctors
+	/**
+	 * @brief default setup for isotropic diffusion filter
+	 */
 	public IsotropicDiffusionFilter() {
 		this.iter = 100;
 		this.lambda = 0.25;
+	}
+
+	/**
+	 * @brief adjust setup for isotropic diffusion filter
+	 * @param iter number of iterations
+	 * @param lambda width of one timestep
+	 */
+	public IsotropicDiffusionFilter(int iter, double lambda) {
+		this.iter = iter;
+		this.lambda = lambda;
 	}
 
 	
