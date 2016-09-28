@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 /**
@@ -19,7 +18,6 @@ import lombok.extern.log4j.Log4j2;
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
 @Log4j2
-@Setter 
 @Getter
 public class ImageProcessor {
 	/// members

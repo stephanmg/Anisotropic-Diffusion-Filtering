@@ -18,6 +18,8 @@ import static org.junit.Assert.*;
  */
 @Log4j2
 public class IsotropicDiffusionFilterTests {
+	private final int iter = 10;
+	private final double lambda = 0.25;
 	/**
 	 * @brief
 	 */
@@ -47,6 +49,15 @@ public class IsotropicDiffusionFilterTests {
 	public void tearDown() {
 	}
 	
+	
+	/**
+	 * brief test parametrized ctors
+	 */
+	@Test
+	public void testParametrizedCtors() {
+		IsotropicDiffusionFilter filter = new IsotropicDiffusionFilter(this.iter, this.lambda);
+		assertNotNull(filter);
+	}
 	
 	/**
 	 * @brief test filter function
