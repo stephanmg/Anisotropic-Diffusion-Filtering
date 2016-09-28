@@ -30,8 +30,9 @@ public class ImageProcessor {
 	/**
 	 * @brief
 	 * @param url
+	 * @param url2
 	 */
-	public void process(final URL url) {
+	public void process(final URL url, final URL url2) {
 		/// load image
 		loadImage(url);
 		
@@ -46,7 +47,7 @@ public class ImageProcessor {
 		postProcess();
 		
 		/// save image
-		saveImage(url);
+		saveImage(url2);
 	}
 	
 	/**
@@ -80,12 +81,17 @@ public class ImageProcessor {
 	/**
 	 * @brief 
 	 * @param url 
+	 * @return
 	 */
-	protected void saveImage(final URL url) {
+	protected boolean saveImage(final URL url) {
 		try {
-			ImageIO.write( (RenderedImage) this.image, "png", new File("test.png"));
+			ImageIO.write( (RenderedImage) this.image, "png", new File(url.getFile()));
+			return true;
 		} catch (IOException ex) {
 			log.error(ex);
+		} catch (Exception e) {
+			log.error(e);
 		}
+		return false;
 	}
 }

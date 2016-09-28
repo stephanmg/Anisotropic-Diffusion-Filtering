@@ -2,8 +2,11 @@
 package de.syntaktischer_zucker.diffusion;
 
 /// imports
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lombok.extern.log4j.Log4j2;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -75,7 +78,10 @@ public class IsotropicDiffusionFilterTests {
 			log.error(ex);
 		}
 		
-		ImageProcessor processor = new ImageProcessor();
-		processor.process(url);
+		try {
+			new ImageProcessor().process(url, new File("test.png").toURI().toURL());
+		} catch (MalformedURLException ex) {
+			log.error(ex);
+		}
 	}
 }
