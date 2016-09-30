@@ -21,7 +21,7 @@ public class IsotropicDiffusionFilter implements Filter {
 	 * @brief default setup for isotropic diffusion filter
 	 */
 	public IsotropicDiffusionFilter() {
-		this.iter = 100;
+		this.iter = 10;
 		this.lambda = 0.25;
 	}
 
@@ -63,12 +63,12 @@ public class IsotropicDiffusionFilter implements Filter {
 						      ((rgb_south >> 16) & 0xFF) +
 						      ((rgb_north >> 16) & 0xFF)));
 
-					int green_new = (int) (( (rgb_center >> 16) & 0xFF) +
-						      this.lambda*(-4* ((rgb_center >> 16) & 0xFF) +
-						      ((rgb_west >> 16) & 0xFF) +
-						      ((rgb_east >> 16) & 0xFF) +
-						      ((rgb_south >> 16) & 0xFF) +
-						      ((rgb_north >> 16) & 0xFF)));
+					int green_new = (int) (( (rgb_center >> 8) & 0xFF) +
+						      this.lambda*(-4* ((rgb_center >> 8) & 0xFF) +
+						      ((rgb_west >> 8) & 0xFF) +
+						      ((rgb_east >> 8) & 0xFF) +
+						      ((rgb_south >> 8) & 0xFF) +
+						      ((rgb_north >> 8) & 0xFF)));
 					
 					int blue_new  = (int) (((rgb_center & 0xFF) +
 						      this.lambda*(-4* (rgb_center & 0xFF) +

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 /**
@@ -19,10 +20,11 @@ import lombok.extern.log4j.Log4j2;
  */
 @Log4j2
 @Getter
+@Setter
 public class ImageProcessor {
 	/// members
 	private final FilterContext context = new FilterContext();
-	private final Filter filter = new IsotropicDiffusionFilter();
+	private Filter filter = new IsotropicDiffusionFilter();
 	private Image image;
 	
 
