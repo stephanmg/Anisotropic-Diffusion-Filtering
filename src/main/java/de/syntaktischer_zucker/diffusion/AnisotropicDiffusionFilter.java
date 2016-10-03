@@ -5,16 +5,24 @@ package de.syntaktischer_zucker.diffusion;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import lombok.Setter;
 
 /**
  * @brief
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
+@Setter
 public class AnisotropicDiffusionFilter implements Filter {
+	/// members
 	private double lambda = 0.1;
 	private double kappa = 5;
 	private int iter = 50;
 
+	/// methods
+	/**
+	 * @brief 
+	 * @param img 
+	 */
 	@Override
 	public void filter(Image img) {
 		BufferedImage image = (BufferedImage) img;
