@@ -8,7 +8,9 @@ import java.awt.image.BufferedImage;
 import lombok.Setter;
 
 /**
- * @brief
+ * @brief anisotropic diffusion filter with exponential fluxes
+ * Cf. project description for course 8023 (this implementation
+ * corresponds to the case when Eq. (3) is used for the fluxes)
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
 @Setter
