@@ -75,16 +75,19 @@ public class AnisotropicDiffusionFilter implements Filter {
 					int blue_new_E  = (((rgb_center >> 16) & 0xFF) -
 						      (rgb_east & 0xFF)); 
 					
+					/// scale with kappa red channel
 					double red_cN = Math.exp(-Math.pow((red_new_N/kappa), 2));
 					double red_cS = Math.exp(-Math.pow((red_new_S/kappa), 2));
 					double red_cW = Math.exp(-Math.pow((red_new_W/kappa), 2));
 					double red_cE = Math.exp(-Math.pow((red_new_E/kappa), 2));
 					
+					/// scale with kappa green channel
 					double green_cN = Math.exp(-Math.pow((green_new_N/kappa), 2));
 					double green_cS = Math.exp(-Math.pow((green_new_S/kappa), 2));
 					double green_cW = Math.exp(-Math.pow((green_new_W/kappa), 2));
 					double green_cE = Math.exp(-Math.pow((green_new_E/kappa), 2));
 					
+					/// scale with kappa blue channel
 					double blue_cN = Math.exp(-Math.pow((blue_new_N/kappa), 2));
 					double blue_cS = Math.exp(-Math.pow((blue_new_S/kappa), 2));
 					double blue_cW = Math.exp(-Math.pow((blue_new_W/kappa), 2));
@@ -102,6 +105,7 @@ public class AnisotropicDiffusionFilter implements Filter {
 					int blue_new =  (int) (blue_center + lambda*(blue_cN*blue_new_N+blue_cS*blue_new_S
 						+blue_cE*blue_new_E+blue_cW*blue_new_W));
 					
+					/// set new "diffused" pixel values: red, green and blue
 					Color color = new Color(red_new, green_new, blue_new);
 					image.setRGB(i, j, color.getRGB());
 				}
