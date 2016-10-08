@@ -5,7 +5,6 @@ package de.syntaktischer_zucker.diffusion;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import lombok.Setter;
 
 /**
  * @brief anisotropic diffusion filter with exponential fluxes
@@ -13,7 +12,6 @@ import lombok.Setter;
  * corresponds to the case when Eq. (3) is used for the fluxes)
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
-@Setter
 public class AnisotropicDiffusionFilter implements Filter {
 	/// members
 	private double lambda = 0.1;
@@ -77,23 +75,23 @@ public class AnisotropicDiffusionFilter implements Filter {
 					int blue_new_E  = (((rgb_center >> 16) & 0xFF) -
 						      (rgb_east & 0xFF)); 
 					
-					/// scale with kappa red channel
-					double red_cN = Math.exp(-Math.pow((red_new_N/kappa), 2));
-					double red_cS = Math.exp(-Math.pow((red_new_S/kappa), 2));
-					double red_cW = Math.exp(-Math.pow((red_new_W/kappa), 2));
-					double red_cE = Math.exp(-Math.pow((red_new_E/kappa), 2));
+					/// scale with flux_derivative red channel
+					double red_cN = flux_derivative(red_new_N);
+					double red_cS = flux_derivative(red_new_S);
+					double red_cW = flux_derivative(red_new_W); 
+					double red_cE = flux_derivative(red_new_E);
 					
-					/// scale with kappa green channel
-					double green_cN = Math.exp(-Math.pow((green_new_N/kappa), 2));
-					double green_cS = Math.exp(-Math.pow((green_new_S/kappa), 2));
-					double green_cW = Math.exp(-Math.pow((green_new_W/kappa), 2));
-					double green_cE = Math.exp(-Math.pow((green_new_E/kappa), 2));
+					/// scale with flux_derivative green channel
+					double green_cN = flux_derivative(green_new_N);
+					double green_cS = flux_derivative(green_new_S);
+					double green_cW = flux_derivative(green_new_W);
+					double green_cE = flux_derivative(green_new_E);
 					
-					/// scale with kappa blue channel
-					double blue_cN = Math.exp(-Math.pow((blue_new_N/kappa), 2));
-					double blue_cS = Math.exp(-Math.pow((blue_new_S/kappa), 2));
-					double blue_cW = Math.exp(-Math.pow((blue_new_W/kappa), 2));
-					double blue_cE = Math.exp(-Math.pow((blue_new_E/kappa), 2));
+					/// scale with flux_derivative blue channel
+					double blue_cN = flux_derivative(blue_new_N);
+					double blue_cS = flux_derivative(blue_new_S);
+					double blue_cW = flux_derivative(blue_new_W);
+					double blue_cE = flux_derivative(blue_new_E);
 
 					int red_center = ((rgb_center >> 16) & 0xFF);
 					int red_new =  (int) (red_center + lambda*(red_cN*red_new_N+red_cS*red_new_S
@@ -113,5 +111,34 @@ public class AnisotropicDiffusionFilter implements Filter {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * @brief calculate flux derivative
+	 * @param intensity
+	 * @return 
+	 */
+	protected double flux_derivative(double intensity) {
+		return Math.exp(-Math.pow((intensity/this.kappa), 2));
+	}
+
+	/// ctors
+	/**
+	 * @brief
+	 * @param kappa
+	 * @param lambda
+	 * @param iter 
+	 */
+	public AnisotropicDiffusionFilter(double kappa, double lambda, int iter) {
+		this.kappa = kappa;
+		this.lambda = lambda;
+		this.iter = iter;
+	}
+	
+	/**
+	 * @brief
+	 */
+	public AnisotropicDiffusionFilter() {
+		
 	}
 }
