@@ -2,7 +2,7 @@
 package de.syntaktischer_zucker.diffusion;
 
 /**
- * @brief
+ * @brief filter factory
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
 public class FilterFactory {
