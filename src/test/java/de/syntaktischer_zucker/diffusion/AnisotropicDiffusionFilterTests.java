@@ -8,10 +8,10 @@ import java.net.URL;
 import lombok.extern.log4j.Log4j2;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @brief tests for AnisotropicDiffusionFilter
@@ -68,7 +68,9 @@ public class AnisotropicDiffusionFilterTests {
 		}
 		
 		try {
-			new ImageProcessor().process(url, new File("test.png").toURI().toURL());
+			ImageProcessor p = new ImageProcessor();
+			p.setFilter(baseStrategy);
+			p.process(url, new File("test.png").toURI().toURL());
 		} catch (MalformedURLException ex) {
 			log.error(ex);
 		}
@@ -91,7 +93,9 @@ public class AnisotropicDiffusionFilterTests {
 		}
 		
 		try {
-			new ImageProcessor().process(url, new File("test.png").toURI().toURL());
+			ImageProcessor p = new ImageProcessor();
+			p.setFilter(baseStrategy);
+			p.process(url, new File("test.png").toURI().toURL());
 		} catch (MalformedURLException ex) {
 			log.error(ex);
 		}
