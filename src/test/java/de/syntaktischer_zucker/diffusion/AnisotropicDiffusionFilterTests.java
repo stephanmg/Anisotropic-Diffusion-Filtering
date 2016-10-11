@@ -8,20 +8,19 @@ import java.net.URL;
 import lombok.extern.log4j.Log4j2;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
- * @brief tests for IsotropicDiffusionFilter
+ * @brief tests for AnisotropicDiffusionFilter
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
 @Log4j2
-public class IsotropicDiffusionFilterTests {
+public class AnisotropicDiffusionFilterTests {
 	/// members
-	private final int iter = 10;
-	private final double lambda = 0.25;
+	private final double kappa = 5;
 	
 	/// methods
 	/**
@@ -36,7 +35,6 @@ public class IsotropicDiffusionFilterTests {
 	 */
 	@AfterClass
 	public static void tearDownClass() {
-		
 	}
 	
 	/**
@@ -52,22 +50,36 @@ public class IsotropicDiffusionFilterTests {
 	@After
 	public void tearDown() {
 	}
-	
+
 	/**
-	 * brief test parametrized ctors
-	 */
-	@Test
-	public void testParametrizedCtors() {
-		IsotropicDiffusionFilter filter = new IsotropicDiffusionFilter(this.iter, this.lambda);
-		assertNotNull(filter);
-	}
-	
-	/**
-	 * @brief test filter function
+	 * @brief test filter
 	 */
 	@Test
 	public void testFilter() {
-		Filter baseStrategy = new FilterFactory().getFilter();
+		Filter baseStrategy = new FilterFactory().getAnisotropicDiffusionFilter();
+		assertNotNull(baseStrategy);
+		
+		URL url = null;
+		
+		try {
+			url = new URL("https://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png");
+		} catch (MalformedURLException ex) {
+			log.error(ex);
+		}
+		
+		try {
+			new ImageProcessor().process(url, new File("test.png").toURI().toURL());
+		} catch (MalformedURLException ex) {
+			log.error(ex);
+		}
+	}
+
+	/**
+	 * @brief test filter variant
+	 */
+	@Test
+	public void testFilterVariant() {
+		Filter baseStrategy = new FilterFactory().getAnisotropicDiffusionFilterVariant(kappa);
 		assertNotNull(baseStrategy);
 		
 		URL url = null;

@@ -16,24 +16,37 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-@Log4j2
 /**
- * @brief
+ * @brief tests for ImageProcessor
  * @author stephanmg <stephan@syntaktischer-zucker.de>
  */
+@Log4j2
 public class ImageProcessorTests {
+	/// methods
+	/**
+	 * @brief
+	 */
 	@BeforeClass
 	public static void setUpClass() {
 	}
 	
+	/**
+	 * @brief
+	 */
 	@AfterClass
 	public static void tearDownClass() {
 	}
 	
+	/**
+	 * @brief
+	 */
 	@Before
 	public void setUp() {
 	}
 	
+	/**
+	 * @brief
+	 */
 	@After
 	public void tearDown() {
 	}
@@ -68,6 +81,9 @@ public class ImageProcessorTests {
 		Assert.assertNull(processor.getImage());
 	}
 	
+	/**
+	 * @brief test saveImage
+	 */
 	@Test
 	public void saveImage() {
 		URL url = null;

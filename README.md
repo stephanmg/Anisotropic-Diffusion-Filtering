@@ -45,7 +45,7 @@ Navigate to the project folder and call either
 `./gradle.sh` or CALL `gradlew.bat`
 
 ## 3. Run
-Execute `Client.java`'s main method.
+Execute `Main.java`'s main method.
 
 # Ideas / Further tasks
 - devise a VRL-Studio plugin (i.e. provide GUI)
