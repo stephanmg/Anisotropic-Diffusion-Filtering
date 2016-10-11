@@ -125,18 +125,6 @@ public class AnisotropicDiffusionFilter implements Filter {
 	/// ctors
 	/**
 	 * @brief
-	 * @param kappa
-	 * @param lambda
-	 * @param iter 
-	 */
-	public AnisotropicDiffusionFilter(double kappa, double lambda, int iter) {
-		this.kappa = kappa;
-		this.lambda = lambda;
-		this.iter = iter;
-	}
-	
-	/**
-	 * @brief
 	 */
 	public AnisotropicDiffusionFilter() {
 		
