@@ -21,7 +21,7 @@ public class IsotropicDiffusionFilter implements Filter {
 	 * @brief default setup for isotropic diffusion filter
 	 */
 	public IsotropicDiffusionFilter() {
-		this.iter = 10;
+		this.iter = 20;
 		this.lambda = 0.25;
 	}
 

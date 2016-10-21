@@ -26,6 +26,7 @@ public class AnisotropicDiffusionFilter implements Filter {
 	@Override
 	public void filter(Image img) {
 		BufferedImage image = (BufferedImage) img;
+		BufferedImage image2 = (BufferedImage) img;
 		for (int k = 0; k < this.iter; k++) {
 			for (int i = 1; i < image.getWidth()-1; i++) {
 				for (int j = 1; j < image.getHeight()-1; j++) {
@@ -36,44 +37,44 @@ public class AnisotropicDiffusionFilter implements Filter {
 					int rgb_center = image.getRGB(i, j);
 					
 					/// red diffs
-					int red_new_N  = (((rgb_center >> 16) & 0xFF) -
-						      ((rgb_north >> 16) & 0xFF)); 
+					int red_new_N  = (((rgb_north >> 16) & 0xFF) -
+						      ((rgb_center >> 16) & 0xFF)); 
 					
-					int red_new_W  = (((rgb_center >> 16) & 0xFF) -
-						      ((rgb_west >> 16) & 0xFF)); 
+					int red_new_W  = (((rgb_west >> 16) & 0xFF) -
+						      ((rgb_center >> 16) & 0xFF)); 
 					
-					int red_new_S  = (((rgb_center >> 16) & 0xFF) -
-						      ((rgb_south >> 16) & 0xFF)); 
+					int red_new_S  = (((rgb_south >> 16) & 0xFF) -
+						      ((rgb_center >> 16) & 0xFF)); 
 					
-					int red_new_E  = (((rgb_center >> 16) & 0xFF) -
-						      ((rgb_east >> 16) & 0xFF)); 
+					int red_new_E  = (((rgb_east >> 16) & 0xFF) -
+						      ((rgb_center >> 16) & 0xFF)); 
 					
 					
 					/// green diffs
-					int green_new_N  = (((rgb_center >> 8) & 0xFF) -
-						      ((rgb_north >> 8) & 0xFF)); 
+					int green_new_N  = (((rgb_north >> 8) & 0xFF) -
+						      ((rgb_center >> 8) & 0xFF)); 
 					
-					int green_new_W  = (((rgb_center >> 16) & 0xFF) -
-						      ((rgb_west >> 8) & 0xFF)); 
+					int green_new_W  = (((rgb_west >> 8) & 0xFF) -
+						      ((rgb_center >> 8) & 0xFF)); 
 					
-					int green_new_S  = (((rgb_center >> 16) & 0xFF) -
-						      ((rgb_south >> 8) & 0xFF)); 
+					int green_new_S  = (((rgb_south >> 8) & 0xFF) -
+						      ((rgb_center >> 8) & 0xFF)); 
 					
-					int green_new_E  = (((rgb_center >> 16) & 0xFF) -
-						      ((rgb_east >> 8) & 0xFF)); 
+					int green_new_E  = (((rgb_east >> 8) & 0xFF) -
+						      ((rgb_center >> 8) & 0xFF)); 
 					
 					/// blue diffs
-					int blue_new_N  = (((rgb_center >> 8) & 0xFF) -
-						      (rgb_north & 0xFF)); 
+					int blue_new_N  = ((rgb_north & 0xFF) -
+						      (rgb_center & 0xFF)); 
 					
-					int blue_new_W  = (((rgb_center >> 16) & 0xFF) -
-						      (rgb_west & 0xFF)); 
+					int blue_new_W  = ((rgb_west & 0xFF) -
+						      (rgb_center & 0xFF)); 
 					
-					int blue_new_S  = (((rgb_center >> 16) & 0xFF) -
-						      (rgb_south & 0xFF)); 
+					int blue_new_S  = ((rgb_south & 0xFF) -
+						      (rgb_center & 0xFF)); 
 					
-					int blue_new_E  = (((rgb_center >> 16) & 0xFF) -
-						      (rgb_east & 0xFF)); 
+					int blue_new_E  = ((rgb_east & 0xFF) -
+						      (rgb_center & 0xFF)); 
 					
 					/// scale with flux_derivative red channel
 					double red_cN = flux_derivative(red_new_N);
@@ -106,10 +107,15 @@ public class AnisotropicDiffusionFilter implements Filter {
 						+blue_cE*blue_new_E+blue_cW*blue_new_W));
 					
 					/// set new "diffused" pixel values: red, green and blue
+					///System.err.println(red_new);
+					///System.err.println(green_new);
+					///System.err.println(blue_new);
 					Color color = new Color(red_new, green_new, blue_new);
-					image.setRGB(i, j, color.getRGB());
+					//image.setRGB(i, j, color.getRGB());
+					image2.setRGB(i, j, color.getRGB());
 				}
 			}
+			image = image2;
 		}
 	}
 	
@@ -119,7 +125,7 @@ public class AnisotropicDiffusionFilter implements Filter {
 	 * @return 
 	 */
 	protected double flux_derivative(double intensity) {
-		return Math.exp(-Math.pow((intensity/this.kappa), 2));
+		return Math.exp(-Math.pow(intensity/this.kappa, 2));
 	}
 
 	/// ctors
@@ -128,5 +134,17 @@ public class AnisotropicDiffusionFilter implements Filter {
 	 */
 	public AnisotropicDiffusionFilter() {
 		
+	}
+	
+	/**
+	 * @brief 
+	 * @param lambda
+	 * @param kappa
+	 * @param iter
+	 */
+	public AnisotropicDiffusionFilter(double lambda, double kappa, int iter) {
+		this.lambda = lambda;
+		this.kappa = kappa;
+		this.iter = iter;
 	}
 }
