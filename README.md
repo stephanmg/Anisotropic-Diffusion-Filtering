@@ -46,6 +46,3 @@ Navigate to the project folder and call either
 
 ## 3. Run
 Execute `Main.java`'s main method.
-
-# Ideas / Further tasks
-- devise a VRL-Studio plugin (i.e. provide GUI)

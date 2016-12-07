@@ -67,16 +67,17 @@ public class Main {
 			*/
 			
 			ImageProcessor p3 = new ImageProcessor();
-			p3.setFilter(new AnisotropicDiffusionFilter(0.1, 20, 100));
-			p3.process(new File("coins.png").toURI().toURL(), new File("coins_filtered2.jpg").toURI().toURL());
+			p3.setFilter(new AnisotropicDiffusionFilter(0.1, 20, 50));
+			p3.process(new File("coins_border.png").toURI().toURL(), new File("coins_filtered3.jpg").toURI().toURL());
 
-			///new ImageProcessor().process(new File("coins.png").toURI().toURL(), new File("coins_filtered_iso.jpg").toURI().toURL());
+			/// new ImageProcessor().process(new File("coins.png").toURI().toURL(), new File("coins_filtered_iso.jpg").toURI().toURL());
 			
 
-			/*ImageProcessor p4 = new ImageProcessor();
-			p4.setFilter(new AnisotropicDiffusionFilter(0.10, 0.1, 500));
+			ImageProcessor p4 = new ImageProcessor();
+			p4.setFilter(new AnisotropicDiffusionFilter(0.1, 20, 50));
 			p4.process(new File("0072_35.jpg").toURI().toURL(), new File("my_lion_aniso.jpg").toURI().toURL());	
-			*/
+			
+			new ImageProcessor().process(new File("0072_35.jpg").toURI().toURL(), new File("my_lion_iso.jpg").toURI().toURL());
 
 
 			

@@ -5,6 +5,7 @@ package de.syntaktischer_zucker.diffusion;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import org.imgscalr.Scalr;
 
 /**
  * @brief anisotropic diffusion filter with exponential fluxes
@@ -107,11 +108,8 @@ public class AnisotropicDiffusionFilter implements Filter {
 						+blue_cE*blue_new_E+blue_cW*blue_new_W));
 					
 					/// set new "diffused" pixel values: red, green and blue
-					///System.err.println(red_new);
-					///System.err.println(green_new);
-					///System.err.println(blue_new);
 					Color color = new Color(red_new, green_new, blue_new);
-					//image.setRGB(i, j, color.getRGB());
+					///image.setRGB(i, j, color.getRGB());
 					image2.setRGB(i, j, color.getRGB());
 				}
 			}
